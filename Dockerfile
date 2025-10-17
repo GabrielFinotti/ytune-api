@@ -40,9 +40,6 @@ RUN npm install --omit=dev && \
 # Copiar código compilado do builder
 COPY --from=builder /app/dist ./dist
 
-# Copiar arquivos necessários
-COPY --from=builder /app/node_modules/@ffmpeg-installer ./node_modules/@ffmpeg-installer
-
 # Mudar ownership para usuário não-root
 RUN chown -R nodejs:nodejs /app
 

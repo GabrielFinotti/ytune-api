@@ -1,4 +1,3 @@
-import ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
 import youtubedl from 'youtube-dl-exec';
 import path from 'path';
 import fs from 'fs/promises';
@@ -16,7 +15,6 @@ interface DownloadResult {
 
 class DownloadService {
   private static instance: DownloadService;
-  private _ffmpegPath = ffmpegInstaller.path;
   private _youtubeRegex =
     /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
   private _isPlaylistRegex = /[?&]list=([^&]+)/;
@@ -114,7 +112,6 @@ class DownloadService {
         postprocessorArgs: 'ffmpeg:-b:a 320k -ar 48000',
         embedThumbnail: true,
         addMetadata: true,
-        ffmpegLocation: this._ffmpegPath,
         noPlaylist: true,
       };
 
